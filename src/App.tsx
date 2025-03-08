@@ -1,5 +1,11 @@
+import { Navbar } from "./components/Navbar/Navbar";
+
 function App() {
-  return <>GSynergy Data Viewer App</>;
+  return (
+    <main>
+      <Navbar />
+    </main>
+  );
 }
 
 export default App;
