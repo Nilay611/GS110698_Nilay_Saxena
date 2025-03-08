@@ -1,6 +1,17 @@
 @import "tailwindcss";
 
 .text-roboto {
-    font-family: "Roboto", sans-serif;
-    font-style: normal;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+}
+
+.ag-header-cell-label,
+.ag-cell-value {
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+}
+
+.ag-column-first {
+  padding: 0 !important;
 }

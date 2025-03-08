@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
-import Store from "../components/Store/Store";
+import Stores from "../components/Stores/Stores";
 import Sku from "../components/Sku/Sku";
 import Planning from "../components/Planning/Planning";
 import Charts from "../components/Charts/Charts";
@@ -12,7 +12,7 @@ export const routes: RouteObject[] = [
     children: [
       {
         index: true, // Default page when visiting "/"
-        element: <Store />,
+        element: <Stores />,
       },
       {
         path: "sku", // Route for sku component

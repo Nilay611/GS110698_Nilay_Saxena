@@ -18,12 +18,12 @@ const storeSlice = createSlice({
     },
     removeStore: (state, action) => {
       state.stores = state.stores.filter(
-        (store: Store) => store.id != action.payload,
+        (store: Store) => store.id != action.payload
       );
     },
     updateStore: (state, action) => {
       const index: number = state.stores.findIndex(
-        (store: Store) => store.id === action.payload.id,
+        (store: Store) => store.id === action.payload.id
       );
       if (index !== -1) {
         state.stores[index] = action.payload;

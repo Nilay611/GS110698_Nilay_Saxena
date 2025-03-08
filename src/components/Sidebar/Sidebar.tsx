@@ -48,7 +48,7 @@ const Sidebar: FC = () => {
             data-testid={item.dataTestId}
             className={
               `w-full flex flex-row gap-2 pr-8 py-3 pl-4 items-center text-2xl cursor-pointer hover:bg-gray-200
-              ${location.pathname === item.path ? "bg-gray-300" : ""}` // Highlight active item
+              ${location.pathname === item.path ? "bg-gray-200" : ""}` // Highlight active item
             }
             to={item.path}
           >

@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import Stores from "./Stores";
 import { Store } from "../../shared/models/Store";
-import storeReducer from "../../redux/store/storeSlice"; // Adjust the import according to your actual file structure
+import storeReducer from "../../redux/store/storeSlice";
 
 describe("Stores Component", () => {
   let store: ReturnType<typeof configureStore>;
