@@ -8,16 +8,18 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test": "npx jest --clearCache && jest",
+    "test:watch": "npx jest --clearCache && jest --watch",
+    "test:coverage": "npx jest --clearCache && jest --coverage"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
     "@tailwindcss/vite": "^4.0.12",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0",
     "react-redux": "^9.2.0",
+    "react-router-dom": "^7.3.0",
     "redux": "^5.0.1",
     "tailwindcss": "^4.0.12",
     "ts-node": "^10.9.2"

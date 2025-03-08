@@ -1,6 +1,6 @@
 import { FC } from "react"; // React functional component, using it to cast navbar to type react functional component
 
-export const Navbar: FC = () => {
+const Navbar: FC = () => {
   return (
     <div
       data-testid={"navbar"} // test ID to identify the Navbar component in tests
@@ -10,10 +10,12 @@ export const Navbar: FC = () => {
         <img src={"/assets/images/gsynergy-logo.svg"} alt={"GSynergy Logo"} />
       </div>
       <div>
-        <h1 className={"text-4xl font-semibold"}>Data Viewer App</h1>
+        <h1 className={"text-5xl"}>Data Viewer App</h1>
       </div>
       <div>User</div>
       {/* Placeholder for the user information */}
     </div>
   );
 };
+
+export default Navbar;
