@@ -1,12 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-interface Store {
-  sqNo: number;
-  id: string;
-  label: string;
-  city: string;
-  state: string;
-}
+import { Store } from "../../shared/models/Store";
 
 interface StoreState {
   stores: Store[];
@@ -24,7 +17,9 @@ const storeSlice = createSlice({
       state.stores.push(action.payload);
     },
     removeStore: (state, action) => {
-      state.stores.filter((store: Store) => store.id !== action.payload.id);
+      state.stores = state.stores.filter(
+        (store: Store) => store.id != action.payload,
+      );
     },
     updateStore: (state, action) => {
       const index: number = state.stores.findIndex(
