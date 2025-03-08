@@ -1,8 +1,8 @@
-import storeReducer, { StoreState } from "./storeSlice";
+import storeReducer from "./storeSlice";
 
 describe("Store Slice", () => {
   it("should return the initial state", () => {
-    const initialState: StoreState = { stores: [] };
-    expect(storeReducer(initialState)).toEqual(initialState);
+    const initialState = { stores: [] };
+    expect(storeReducer(undefined, { type: "@@INIT" })).toEqual(initialState);
   });
 });
