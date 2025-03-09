@@ -1,4 +1,4 @@
-export interface Store {
+export interface IStore {
   sqNo: number;
   id: string;
   label: string;

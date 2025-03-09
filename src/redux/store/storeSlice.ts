@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Store } from "../../shared/models/Store";
+import { IStore } from "../../shared/models/Store";
 
 interface StoreState {
-  stores: Store[];
+  stores: IStore[];
 }
 
 const initialState: StoreState = {
@@ -18,16 +18,19 @@ const storeSlice = createSlice({
     },
     removeStore: (state, action) => {
       state.stores = state.stores.filter(
-        (store: Store) => store.id != action.payload
+        (store: IStore) => store.id != action.payload
       );
     },
     updateStore: (state, action) => {
       const index: number = state.stores.findIndex(
-        (store: Store) => store.id === action.payload.id
+        (store: IStore) => store.id === action.payload.id
       );
       if (index !== -1) {
         state.stores[index] = action.payload;
       }
+
+      // Ensuring that the stores are sorted by `sqNo` after update
+      state.stores.sort((a, b) => a.sqNo - b.sqNo);
     },
   },
 });
