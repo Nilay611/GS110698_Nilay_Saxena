@@ -24,7 +24,7 @@ describe("GridDeleteButton component", () => {
   it("renders the button successfully", () => {
     render(
       <Provider store={store}>
-        <GridDeleteButton id="test" />
+        <GridDeleteButton id="test" removeValFromStoreMethod={() => {}} />
       </Provider>
     );
     const buttonElement = screen.getByRole("button");
