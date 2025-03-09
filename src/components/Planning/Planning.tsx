@@ -1,22 +1,25 @@
-import { FC, useMemo } from "react";
+import { FC, useCallback, useMemo } from "react";
 import {
   AllCommunityModule,
   CellClassParams,
+  CellValueChangedEvent,
   ColDef,
   ColGroupDef,
   ModuleRegistry,
   themeQuartz,
 } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
-import { useAppSelector } from "../../redux/hooks/hooks";
+import { useAppSelector, useAppDispatch } from "../../redux/hooks/hooks";
 import { ICalendar } from "../../shared/models/Calendar";
 import { IPlanning } from "../../shared/models/Planning";
 import { IStore } from "../../shared/models/Store";
 import { ISku } from "../../shared/models/Sku";
+import { updateSalesUnits } from "../../redux/planning/planningSlice";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 const Planning: FC = () => {
+  const dispatch = useAppDispatch();
   const storeVal: IStore[] = useAppSelector((state) => state.store.stores);
   const skuVal: ISku[] = useAppSelector((state) => state.sku.skus);
   const calendarVal: ICalendar[] = useAppSelector(
@@ -45,7 +48,20 @@ const Planning: FC = () => {
     [planningVal, storeVal, skuVal]
   );
 
-  console.log(rowData);
+  const onCellValueChanged = useCallback(
+    (params: CellValueChangedEvent<IPlanning>) => {
+      if (params.colDef.field?.includes("-salesUnits")) {
+        dispatch(
+          updateSalesUnits({
+            rowIndex: params.node?.rowIndex ?? 0,
+            value: params.newValue as number,
+            week: params.colDef.field.split("-")[0],
+          })
+        );
+      }
+    },
+    [dispatch]
+  );
 
   const transformCalendarData = () => {
     const groupedData: Record<
@@ -114,7 +130,7 @@ const Planning: FC = () => {
                 0;
               const price = params.data?.price || 0;
               const cost = params.data?.cost || 0;
-              return `$${(salesUnits * price - salesUnits * cost).toFixed(2)}`;
+              return `$ ${(salesUnits * price - salesUnits * cost).toFixed(2)}`;
             },
           },
           {
@@ -130,7 +146,7 @@ const Planning: FC = () => {
               const salesDollars = salesUnits * price;
               const gmDollars = salesDollars - salesUnits * cost;
               return salesDollars
-                ? `${((gmDollars / salesDollars) * 100).toFixed(2)}%`
+                ? `${((gmDollars / salesDollars) * 100).toFixed(2)} %`
                 : "0%";
             },
             cellStyle: (params: CellClassParams) => {
@@ -159,6 +175,7 @@ const Planning: FC = () => {
         theme={themeQuartz}
         rowData={rowData}
         columnDefs={transformCalendarData()}
+        onCellValueChanged={onCellValueChanged}
         animateRows={true}
       />
     </section>

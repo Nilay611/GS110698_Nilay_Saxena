@@ -16,8 +16,14 @@ const planningSlice = createSlice({
     setPlanningData: (state, action) => {
       state.planning = action.payload;
     },
+    updateSalesUnits: (state, action) => {
+      const { rowIndex, value, week } = action.payload;
+      if (state.planning[rowIndex]) {
+        state.planning[rowIndex][`${week.toLowerCase()}-salesUnits`] = value;
+      }
+    },
   },
 });
 
-export const { setPlanningData } = planningSlice.actions;
+export const { setPlanningData, updateSalesUnits } = planningSlice.actions;
 export default planningSlice.reducer;
