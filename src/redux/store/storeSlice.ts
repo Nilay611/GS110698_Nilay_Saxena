@@ -20,6 +20,10 @@ const storeSlice = createSlice({
       state.stores = state.stores.filter(
         (store: IStore) => store.id != action.payload
       );
+
+      state.stores.forEach((item, index) => {
+        item.sqNo = index + 1;
+      });
     },
     updateStore: (state, action) => {
       const index: number = state.stores.findIndex(

@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
 import Stores from "../components/Stores/Stores";
-import Sku from "../components/Sku/Sku";
+import Sku from "../components/Skus/Skus";
 import Planning from "../components/Planning/Planning";
 import Charts from "../components/Charts/Charts";
 

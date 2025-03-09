@@ -10,7 +10,7 @@ import {
 } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks/hooks";
-import { updateStore } from "../../redux/store/storeSlice";
+import { removeStore, updateStore } from "../../redux/store/storeSlice";
 import { IStore } from "../../shared/models/Store";
 import { Button } from "../ui/Button/Button";
 import { GridDeleteButton } from "../ui/GridDeleteButton/GridDeleteButton";
@@ -25,8 +25,14 @@ const Stores: FC = () => {
     () => storesVal.map((store) => ({ ...store })),
     [storesVal]
   );
-
   const [addNewStore, setAddNewStore] = useState(false);
+
+  const removeValFromStoreMethod = useCallback(
+    (id: string) => {
+      dispatch(removeStore(id));
+    },
+    [dispatch]
+  );
 
   const onCellValueChanged = useCallback(
     // Handle Cell Edits
@@ -66,7 +72,10 @@ const Stores: FC = () => {
         field: "id",
         width: 100,
         cellRenderer: ({ value }: { value: string }) => (
-          <GridDeleteButton id={value} />
+          <GridDeleteButton
+            id={value}
+            removeValFromStoreMethod={removeValFromStoreMethod}
+          />
         ),
       },
       { headerName: "S.No", field: "sqNo", rowDrag: true },
@@ -74,7 +83,7 @@ const Stores: FC = () => {
       { headerName: "City", field: "city", flex: 1, editable: true },
       { headerName: "State", field: "state", flex: 1, editable: true },
     ],
-    []
+    [removeValFromStoreMethod]
   );
 
   return (
