@@ -1,5 +1,5 @@
 import storeReducer, { addStore, removeStore, updateStore } from "./storeSlice";
-import { Store } from "../../shared/models/Store";
+import { IStore } from "../../shared/models/Store";
 
 describe("Store Slice", () => {
   it("should return the initial state", () => {
@@ -9,7 +9,7 @@ describe("Store Slice", () => {
 
   it("should add a store to the stores state", () => {
     const initialState = { stores: [] };
-    const newStore: Store = {
+    const newStore: IStore = {
       sqNo: 1,
       id: "ST035",
       label: "San Francisco Bay Trends",

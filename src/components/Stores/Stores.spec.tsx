@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import Stores from "./Stores";
-import { Store } from "../../shared/models/Store";
+import { IStore } from "../../shared/models/Store";
 import storeReducer from "../../redux/store/storeSlice";
 
 describe("Stores Component", () => {
@@ -30,7 +30,7 @@ describe("Stores Component", () => {
               city: "City 2",
               state: "State 2",
             },
-          ] as Store[],
+          ] as IStore[],
         },
       },
     });
@@ -52,9 +52,7 @@ describe("Stores Component", () => {
         <Stores />
       </Provider>
     );
-    const newStoreButton = screen.getByRole("button", {
-      name: /New Store/i,
-    });
+    const newStoreButton = screen.getByTestId("new-store-button");
     expect(newStoreButton).toBeInTheDocument();
   });
 });

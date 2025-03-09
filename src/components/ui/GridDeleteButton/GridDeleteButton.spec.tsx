@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { GridDeleteButton } from "./GridDeleteButton";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import { Store } from "../../../shared/models/Store";
+import { IStore } from "../../../shared/models/Store";
 import storeReducer from "../../../redux/store/storeSlice";
 
 describe("GridDeleteButton component", () => {
@@ -15,7 +15,7 @@ describe("GridDeleteButton component", () => {
       },
       preloadedState: {
         store: {
-          stores: [] as Store[],
+          stores: [] as IStore[],
         },
       },
     });
