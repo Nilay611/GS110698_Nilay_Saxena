@@ -13,6 +13,9 @@ const storeSlice = createSlice({
   name: "store",
   initialState,
   reducers: {
+    setStoreData: (state, action) => {
+      state.stores = action.payload;
+    },
     addStore: (state, action) => {
       state.stores.push(action.payload);
     },
@@ -39,5 +42,6 @@ const storeSlice = createSlice({
   },
 });
 
-export const { addStore, removeStore, updateStore } = storeSlice.actions;
+export const { setStoreData, addStore, removeStore, updateStore } =
+  storeSlice.actions;
 export default storeSlice.reducer;

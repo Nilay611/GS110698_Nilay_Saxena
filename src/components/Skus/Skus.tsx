@@ -76,7 +76,6 @@ const Skus: FC = () => {
         theme={themeQuartz}
         rowData={rowData}
         columnDefs={columnDefs}
-        rowDragManaged={true}
         animateRows={true}
         stopEditingWhenCellsLoseFocus={true}
         onCellValueChanged={onCellValueChanged} // Handle cell edits

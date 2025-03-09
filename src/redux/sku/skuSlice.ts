@@ -13,6 +13,9 @@ const skuSlice = createSlice({
   name: "sku",
   initialState,
   reducers: {
+    setSkuData: (state, action) => {
+      state.skus = action.payload;
+    },
     addSku: (state, action) => {
       state.skus.push(action.payload);
     },
@@ -30,5 +33,5 @@ const skuSlice = createSlice({
   },
 });
 
-export const { addSku, removeSku, updateSku } = skuSlice.actions;
+export const { setSkuData, addSku, removeSku, updateSku } = skuSlice.actions;
 export default skuSlice.reducer;

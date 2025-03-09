@@ -12,6 +12,7 @@
   font-style: normal;
 }
 
-.ag-column-first {
-  padding: 0 !important;
+.ag-header-cell-comp-wrapper,
+.ag-header-cell-label {
+  justify-content: center;
 }
