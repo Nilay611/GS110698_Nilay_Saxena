@@ -4,7 +4,7 @@ import * as XLSX from "xlsx";
 
 interface CalendarState {
   calendar: ICalendar[];
-  loading: boolean;
+  loading?: boolean;
 }
 
 interface RawCalendarData {

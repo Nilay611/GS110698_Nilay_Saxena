@@ -31,6 +31,7 @@ describe("Stores Component", () => {
               state: "State 2",
             },
           ] as IStore[],
+          loading: false,
         },
       },
     });

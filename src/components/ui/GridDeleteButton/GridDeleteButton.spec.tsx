@@ -16,6 +16,7 @@ describe("GridDeleteButton component", () => {
       preloadedState: {
         store: {
           stores: [] as IStore[],
+          loading: false,
         },
       },
     });

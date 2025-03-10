@@ -4,7 +4,7 @@ import * as XLSX from "xlsx";
 
 interface SkuState {
   skus: ISku[];
-  loading: boolean;
+  loading?: boolean;
 }
 
 interface RawSkuData {

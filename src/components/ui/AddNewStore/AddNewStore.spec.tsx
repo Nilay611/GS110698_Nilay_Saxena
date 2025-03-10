@@ -17,6 +17,7 @@ describe("AddNewStore Component", () => {
       preloadedState: {
         store: {
           stores: [] as IStore[],
+          loading: false,
         },
       },
     });

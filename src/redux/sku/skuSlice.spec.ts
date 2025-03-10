@@ -3,12 +3,12 @@ import { ISku } from "../../shared/models/Sku";
 
 describe("Sku Slice", () => {
   it("should return the initial state", () => {
-    const initialState = { skus: [] };
+    const initialState = { skus: [], loading: false };
     expect(skuReducer(undefined, { type: "@@INIT" })).toEqual(initialState);
   });
 
   it("should add a sku to the skus state", () => {
-    const initialState = { skus: [] };
+    const initialState = { skus: [], loading: false };
     const newSku: ISku = {
       id: "SK00269",
       label: "Faux Leather Leggings",
@@ -34,6 +34,7 @@ describe("Sku Slice", () => {
           cost: 18.28341,
         },
       ],
+      loading: false,
     };
 
     const nextState = skuReducer(initialState, removeSku("SK00269"));
@@ -52,6 +53,7 @@ describe("Sku Slice", () => {
           cost: 18.28341,
         },
       ],
+      loading: false,
     };
     const updatedSku = {
       id: "SK00269",

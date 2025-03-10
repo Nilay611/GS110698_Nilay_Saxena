@@ -1,12 +1,12 @@
+import { FC, ReactNode, useEffect } from "react";
 import { useAppSelector } from "../redux/hooks/hooks";
 import { router } from "../router/routes";
-import { useEffect } from "react";
 
 interface ProtectedRouteProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
+const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
   const isAuthenticated = useAppSelector((state) => state.auth.isLoggedIn);
 
   useEffect(() => {

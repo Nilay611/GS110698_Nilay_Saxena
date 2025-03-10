@@ -4,7 +4,7 @@ import * as XLSX from "xlsx";
 
 interface PlanningState {
   planning: IPlanning[];
-  loading: boolean;
+  loading?: boolean;
 }
 
 interface RawPlanningData {

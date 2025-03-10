@@ -18,7 +18,6 @@ const Login: FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(import.meta.env.VITE_GYSYNERGY_USERNAME);
     const predefinedUsername = import.meta.env.VITE_GYSYNERGY_USERNAME;
     const predefinedPassword = import.meta.env.VITE_GYSYNERGY_PASSWORD;
 

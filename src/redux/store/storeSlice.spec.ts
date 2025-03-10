@@ -3,12 +3,12 @@ import { IStore } from "../../shared/models/Store";
 
 describe("Store Slice", () => {
   it("should return the initial state", () => {
-    const initialState = { stores: [] };
+    const initialState = { stores: [], loading: false };
     expect(storeReducer(undefined, { type: "@@INIT" })).toEqual(initialState);
   });
 
   it("should add a store to the stores state", () => {
-    const initialState = { stores: [] };
+    const initialState = { stores: [], loading: false };
     const newStore: IStore = {
       sqNo: 1,
       id: "ST035",
@@ -32,6 +32,7 @@ describe("Store Slice", () => {
           state: "CA",
         },
       ],
+      loading: false,
     };
 
     const nextState = storeReducer(initialState, removeStore("ST035"));
@@ -49,6 +50,7 @@ describe("Store Slice", () => {
           state: "CA",
         },
       ],
+      loading: false,
     };
     const updatedStore = {
       sqNo: 1,
