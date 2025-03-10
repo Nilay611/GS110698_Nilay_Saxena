@@ -1,43 +1,34 @@
 import { useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/routes";
-import { useDispatch } from "react-redux";
-import { setStoreData } from "./redux/store/storeSlice";
-import { readStoresData } from "./utils/importStoresData";
-import { setSkuData } from "./redux/sku/skuSlice";
-import { readSkusData } from "./utils/importSkusData";
-import { setCalendarData } from "./redux/calendar/calendarSlice";
-import { readCalendarData } from "./utils/importCalendarData";
-import { setPlanningData } from "./redux/planning/planningSlice";
-import { readPlanningData } from "./utils/importPlanningData";
+import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
+import { fetchStoresData } from "./redux/store/storeSlice";
+import { fetchSkusData } from "./redux/sku/skuSlice";
+import { fetchCalendarData } from "./redux/calendar/calendarSlice";
+import { fetchPlanningData } from "./redux/planning/planningSlice";
+import { Loading } from "./components/Loading/Loading";
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const isLoading = useAppSelector(
+    (state) =>
+      state.store.loading ||
+      state.sku.loading ||
+      state.calendar.loading ||
+      state.planning.loading
+  );
 
   useEffect(() => {
     const filePath = "/assets/data/SampleData.xlsx";
-    const loadStoresData = async () => {
-      const storesData = await readStoresData(filePath);
-      dispatch(setStoreData(storesData));
-    };
-    const loadSkusData = async () => {
-      const skusData = await readSkusData(filePath);
-      dispatch(setSkuData(skusData));
-    };
-    const loadCalendarData = async () => {
-      const calendarData = await readCalendarData(filePath);
-      dispatch(setCalendarData(calendarData));
-    };
-    const loadPlanningData = async () => {
-      const planningData = await readPlanningData(filePath);
-      dispatch(setPlanningData(planningData));
-    };
-
-    loadStoresData();
-    loadSkusData();
-    loadCalendarData();
-    loadPlanningData();
+    dispatch(fetchStoresData(filePath));
+    dispatch(fetchSkusData(filePath));
+    dispatch(fetchCalendarData(filePath));
+    dispatch(fetchPlanningData(filePath));
   }, [dispatch]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return <RouterProvider router={router} />;
 }

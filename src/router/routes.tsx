@@ -1,14 +1,24 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
-import Layout from "../components/Layout/Layout";
+import Layout from "../pages/Layout/Layout";
 import Stores from "../components/Stores/Stores";
 import Sku from "../components/Skus/Skus";
 import Planning from "../components/Planning/Planning";
 import Charts from "../components/Charts/Charts";
+import Login from "../pages/Login/Login";
+import ProtectedRoute from "../utils/ProtectedRoute";
 
 export const routes: RouteObject[] = [
   {
+    path: "/login", // Login component
+    element: <Login />,
+  },
+  {
     path: "/",
-    element: <Layout />,
+    element: (
+      <ProtectedRoute>
+        <Layout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         index: true, // Default page when visiting "/"

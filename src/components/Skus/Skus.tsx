@@ -61,8 +61,22 @@ const Skus: FC = () => {
         ),
       },
       { headerName: "SKU", field: "label", flex: 1, editable: true },
-      { headerName: "Price", field: "price", flex: 1, editable: true },
-      { headerName: "Cost", field: "cost", flex: 1, editable: true },
+      {
+        headerName: "Price",
+        field: "price",
+        flex: 1,
+        editable: true,
+        type: "numericColumn",
+        valueGetter: (params) => `$ ${params.data?.price}`,
+      },
+      {
+        headerName: "Cost",
+        field: "cost",
+        flex: 1,
+        editable: true,
+        type: "numericColumn",
+        valueGetter: (params) => `$ ${params.data?.cost}`,
+      },
     ],
     [removeValFromStoreMethod]
   );

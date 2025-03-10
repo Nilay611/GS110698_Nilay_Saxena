@@ -63,7 +63,7 @@ const Planning: FC = () => {
     [dispatch]
   );
 
-  const transformCalendarData = () => {
+  const transformCalendarData = useCallback(() => {
     const groupedData: Record<
       string,
       {
@@ -164,7 +164,18 @@ const Planning: FC = () => {
     columns.push(...Object.values(groupedData));
 
     return columns;
-  };
+  }, [calendarVal]);
+
+  const columnDefs: (ColDef<IPlanning> | ColGroupDef<IPlanning>)[] =
+    useMemo(() => {
+      if (!calendarVal.length) {
+        return [
+          { field: "store", headerName: "Store", pinned: "left", width: 300 },
+          { field: "sku", headerName: "SKU", pinned: "left", width: 300 },
+        ]; // Return basic columns while loading
+      }
+      return transformCalendarData();
+    }, [calendarVal, transformCalendarData]);
 
   return (
     <section
@@ -174,7 +185,7 @@ const Planning: FC = () => {
       <AgGridReact
         theme={themeQuartz}
         rowData={rowData}
-        columnDefs={transformCalendarData()}
+        columnDefs={columnDefs}
         onCellValueChanged={onCellValueChanged}
         animateRows={true}
       />
