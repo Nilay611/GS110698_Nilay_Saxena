@@ -59,10 +59,10 @@
    - Built and utilized my own components like add new dialogs, logins, buttons, etc.
    - Used TailwindCSS for styling and AG-Grid and Recharts for visualization.
 
-7. **Added unit tests in Jest:**
+6. **Added unit tests in Jest:**
    - Followed Test Driven Development paradigm and added unit tests for most components using Jest and React Testing Library.
 
-8. **Deployment on Vercel:**
+7. **Deployment on Vercel:**
    - Configured and successfully deployed the app on Vercel for easy access.
 
 ## ⏳ Improvements if Given 4 More Hours
