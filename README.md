@@ -1,7 +1,7 @@
 # GSynergy Coding Challenge
 - This project was built using Vite React for the GSynergy Coding Challenge.
 - ✅ Live Demo: [Click Here](https://gs110698nilaysaxena.vercel.app)
-- 📽️ Video Demo: [Click Here](https://youtube.com)
+- 📽️ Video Demo: [Click Here](https://youtu.be/1Yz_jLeYQQo)
 
 ## 🚀 Getting Started
 
@@ -54,11 +54,15 @@
 4. **Added Authentication:**
    - Added a simple form authentication using React Redux.
    - Protected all the routes for unauthorized access using a higher order component.
+  
+5. **Created and used custom components:**
+   - Built and utilized my own components like add new dialogs, logins, buttons, etc.
+   - Used TailwindCSS for styling and AG-Grid and Recharts for visualization.
 
-6. **Added unit tests in Jest:**
+7. **Added unit tests in Jest:**
    - Followed Test Driven Development paradigm and added unit tests for most components using Jest and React Testing Library.
 
-7. **Deployment on Vercel:**
+8. **Deployment on Vercel:**
    - Configured and successfully deployed the app on Vercel for easy access.
 
 ## ⏳ Improvements if Given 4 More Hours
