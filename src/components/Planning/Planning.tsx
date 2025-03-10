@@ -30,21 +30,23 @@ const Planning: FC = () => {
   );
   const rowData = useMemo(
     () =>
-      planningVal.map((plan) => {
-        const storeName = storeVal.filter((item) => item.id === plan.store)[0]
-          ?.label;
-        const sku = skuVal.filter((item) => item.id === plan.sku)[0];
+      planningVal
+        .map((plan) => {
+          const storeName = storeVal.filter((item) => item.id === plan.store)[0]
+            ?.label;
+          const sku = skuVal.filter((item) => item.id === plan.sku)[0];
 
-        if (!storeName || !sku) return plan;
+          if (!storeName || !sku) return null;
 
-        return {
-          ...plan,
-          store: storeName,
-          sku: sku.label,
-          price: sku.price,
-          cost: sku.cost,
-        };
-      }),
+          return {
+            ...plan,
+            store: storeName,
+            sku: sku.label,
+            price: sku.price,
+            cost: sku.cost,
+          };
+        })
+        .filter((plan) => plan !== null),
     [planningVal, storeVal, skuVal]
   );
 

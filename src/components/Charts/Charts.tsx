@@ -66,12 +66,10 @@ const Charts: FC = () => {
         const match = regex.exec(key);
         if (match) {
           const week = match[1];
-          const salesUnits = (item[key] as number) || 0;
-          const salesDollars = Number(
-            (salesUnits * (item.price as number)).toFixed(2)
-          );
+          const salesUnits = (item[key as keyof typeof item] as number) || 0;
+          const salesDollars = Number((salesUnits * item.price).toFixed(2));
           const gmDollars = Number(
-            (salesDollars - salesUnits * (item.cost as number)).toFixed(2)
+            (salesDollars - salesUnits * item.cost).toFixed(2)
           );
 
           if (!weeklyTotals[week]) {
