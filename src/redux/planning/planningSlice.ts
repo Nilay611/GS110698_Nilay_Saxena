@@ -28,6 +28,11 @@ const planningSlice = createSlice({
     },
     updateSalesUnits: (state, action) => {
       const { rowIndex, value, week } = action.payload;
+      state.planning.sort(
+        (a, b) =>
+          Number(b["w01-salesUnits"] ?? 0) - Number(a["w01-salesUnits"] ?? 0)
+      );
+
       if (state.planning[rowIndex]) {
         state.planning[rowIndex][`${week.toLowerCase()}-salesUnits`] = value;
       }

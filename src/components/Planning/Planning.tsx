@@ -90,6 +90,8 @@ const Planning: FC = () => {
       { field: "sku", headerName: "SKU", pinned: "left", width: 300 },
     ];
 
+    let isFirstWeek = true; // Flag to track the first week's Sales Units
+
     calendarVal.forEach(({ monthLabel, week, weekLabel }) => {
       if (!groupedData[monthLabel]) {
         groupedData[monthLabel] = {
@@ -105,7 +107,7 @@ const Planning: FC = () => {
             field: `${week.toLowerCase()}-salesUnits`,
             editable: true,
             type: "numericColumn",
-            sort: "desc",
+            sort: isFirstWeek ? "desc" : "",
             valueGetter: (params) => {
               return params.data[`${week.toLowerCase()}-salesUnits`] || 0;
             },
@@ -161,6 +163,8 @@ const Planning: FC = () => {
           },
         ],
       });
+
+      isFirstWeek = false;
     });
 
     columns.push(...Object.values(groupedData));
