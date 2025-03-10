@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from "react";
-import { Button } from "../../components/ui/Button/Button";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
-import { login } from "../../redux/auth/authSlice";
-import { router } from "../../router/routes";
+import { Button } from "../components/ui/Button/Button";
+import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
+import { login } from "../redux/auth/authSlice";
+import { router } from "../router/routes";
 
 const Login: FC = () => {
   const dispatch = useAppDispatch();
